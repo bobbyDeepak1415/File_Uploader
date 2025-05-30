@@ -4,12 +4,12 @@ function FileUploader(props) {
   const [files, setFiles] = useState([]);
   const fileInputRef = useRef(null);
 
-  const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.value);
+  const handleSelectFile = (e) => {
+    const selectedFiles = Array.from(e.target.files);
     setFiles((prev) => [...prev, ...selectedFiles]);
   };
 
-  const openFileDialog = () => {
+  const handleSelect = () => {
     fileInputRef.current.click();
   };
 
@@ -17,41 +17,36 @@ function FileUploader(props) {
     e.preventDefault();
     e.stopPropagation();
   };
-
+  
   const handleDrop = (e) => {
     e.preventDefault();
     const droppedFiles = Array.from(e.dataTransfer.files);
     setFiles((prev) => [...prev, ...droppedFiles]);
   };
-
   return (
     <div>
+      <h2>File Uploader</h2>
       <input
-        type="file"
         hidden
         multiple
         ref={fileInputRef}
-        onChange={handleFileChange}
+        onChange={handleSelectFile}
+        type="file"
       />
-      <button onClick={openFileDialog}> Browse Files</button>
+      <button onClick={handleSelect}>BrowseFiles</button>
       <div
-        onDrop={handleDrop}
-        onDragOver={preventDefaults}
         onDragEnter={preventDefaults}
-        style={{
-          border: "2px dashed",
-          padding: "100px",
-          maggin: "10px",
-          textAlign: "center",
-        }}
+        onDragOver={preventDefaults}
+        onDrop={handleDrop}
+        style={{ border: "1px dashed", padding: "100px", margin: "10px" }}
       >
-        Drop files here
+        Drop file here
       </div>
+
       <div>
-        <h4>Uploaded files here</h4>
         <ul>
-          {files.map((item, index) => {
-            return <li key={index}>{item.name}</li>;
+          {files.map((file, index) => {
+            return <li key={index}>{file.name}</li>;
           })}
         </ul>
       </div>
