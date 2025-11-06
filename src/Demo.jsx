@@ -10,14 +10,20 @@ function Demo() {
   };
 
   const handleSelect = (e) => {
-    const selectedFiles=Array.from(e.target.files)
-    setFiles((prev)=>[...prev,...selectedFiles])
-
+    const selectedFiles = Array.from(e.target.files);
+    setFiles((prev) => [...prev, ...selectedFiles]);
   };
 
-  const handleDrop=(e)=>{
-e.preventDefault()
-  }
+  const handleDefault = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    setFiles((prev) => [...prev, ...droppedFiles]);
+  };
 
   return (
     <div>
@@ -27,30 +33,31 @@ e.preventDefault()
         type="file"
         multiple
         hidden
-        onChange={(e)=>handleSelect(e)}
+        onChange={(e) => handleSelect(e)}
       ></input>
-      <button style={{marginBottom:"2rem"}} onClick={handleClick}>Click to browse</button>
+      <button style={{ marginBottom: "2rem" }} onClick={handleClick}>
+        Click to browse
+      </button>
       <div
         style={{
           border: "1px dashed",
           height: "40vh",
           width: "80vw",
-          margin:"auto"
-        
+          margin: "auto",
         }}
-
-onDrop={handleDrop}
+        onDrop={handleDrop}
+        onDragEnter={handleDefault}
+        onDragOver={handleDefault}
       >
         Drop your files here:
       </div>
-    <div>
-      <ul>
-
-      {files.map((file,index)=>{
-        return <li key={index}>{file.name}</li>
-      })}
-      </ul>
-    </div>
+      <div>
+        <ul>
+          {files.map((file, index) => {
+            return <li key={index}>{file.name}</li>;
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
