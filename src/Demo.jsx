@@ -1,8 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Demo() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(()=>{
+    try{
+
+      const files=localStorage.getItem("files")
+      return files ? JSON.parse(files) : []
+
+    }catch(error){
+console.log("not found",error)
+    }
+  });
+
+
+
+  useEffect(()=>{
+  localStorage.setItem("files",JSON.stringify(files))
+  },[files])
+
   const inputFileRef = useRef(null);
+
+
+
 
   const handleClick = () => {
     inputFileRef.current.click();
