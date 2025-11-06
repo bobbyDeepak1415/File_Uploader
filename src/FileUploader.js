@@ -1,12 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function FileUploader(props) {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(() => {
+    try {
+      const localArr = localStorage.getItem("files");
+      return localArr ? JSON.parse(localArr) : [];
+    } catch (er) {
+      console.error("not found", er);
+    }
+  });
   const inputFileRef = useRef(null);
+
+  useEffect(() => {
+    localStorage.setItem("files", JSON.stringify(files));
+  }, [files]);
 
   const handleSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    setFiles((prev) => [...prev, ...selectedFiles]);
+
+    const fileData = selectedFiles.map((file) => {
+      return { name: file.name };
+    });
+
+    setFiles((prev) => [...prev, ...fileData]);
   };
 
   const handleClick = () => {
@@ -22,7 +38,11 @@ function FileUploader(props) {
   const handleDrop = (e) => {
     e.preventDefault();
     const droppedFiles = Array.from(e.dataTransfer.files);
-    setFiles((prev) => [...prev, ...droppedFiles]);
+    const fileData = droppedFiles.map((file) => {
+      return { name: file.name };
+    });
+
+    setFiles((prev) => [...prev, ...fileData]);
   };
 
   return (

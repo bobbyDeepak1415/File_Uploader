@@ -1,84 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
-function Demo() {
-  const [files, setFiles] = useState(()=>{
-    try{
-
-      const files=localStorage.getItem("files")
-      return files ? JSON.parse(files) : []
-
-    }catch(error){
-console.log("not found",error)
-    }
-  });
-
-
-
-  useEffect(()=>{
-  localStorage.setItem("files",JSON.stringify(files))
-  },[files])
-
-  const inputFileRef = useRef(null);
-
-
-
-
-  const handleClick = () => {
-    inputFileRef.current.click();
-    inputFileRef.current.value = "";
-  };
-
-  const handleSelect = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    setFiles((prev) => [...prev, ...selectedFiles]);
-  };
-
-  const handleDefault = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const droppedFiles = Array.from(e.dataTransfer.files);
-    setFiles((prev) => [...prev, ...droppedFiles]);
-  };
-
+const Demo = () => {
   return (
     <div>
-      <h2>Demo</h2>
-      <input
-        ref={inputFileRef}
-        type="file"
-        multiple
-        hidden
-        onChange={(e) => handleSelect(e)}
-      ></input>
-      <button style={{ marginBottom: "2rem" }} onClick={handleClick}>
-        Click to browse
-      </button>
-      <div
-        style={{
-          border: "1px dashed",
-          height: "40vh",
-          width: "80vw",
-          margin: "auto",
-        }}
-        onDrop={handleDrop}
-        onDragEnter={handleDefault}
-        onDragOver={handleDefault}
-      >
-        Drop your files here:
-      </div>
-      <div>
-        <ul>
-          {files.map((file, index) => {
-            return <li key={index}>{file.name}</li>;
-          })}
-        </ul>
-      </div>
+      <h1>Demo</h1>
     </div>
   );
-}
+};
 
 export default Demo;
