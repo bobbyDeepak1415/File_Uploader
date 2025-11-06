@@ -10,8 +10,8 @@ function FileUploader(props) {
   };
 
   const handleClick = () => {
-    inputFileRef.current.value = "";
     inputFileRef.current.click();
+    inputFileRef.current.value = "";
   };
 
   const handleDefaults = (e) => {
