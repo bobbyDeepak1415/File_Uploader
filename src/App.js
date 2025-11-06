@@ -1,12 +1,12 @@
 import "./App.css";
-// import Demo from './Demo';
-import FileUploader from "./FileUploader";
+import Demo from './Demo';
+// import FileUploader from "./FileUploader";
 
 function App() {
   return (
     <div className="App">
-      <FileUploader />
-      {/* <Demo/> */}
+      {/* <FileUploader /> */}
+      <Demo/>
     </div>
   );
 }
