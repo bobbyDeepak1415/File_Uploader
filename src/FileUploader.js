@@ -21,7 +21,7 @@ function FileUploader(props) {
     const fileData = selectedFiles.map((file) => {
       return { name: file.name };
     });
-.
+
     setFiles((prev) => [...prev, ...fileData]);
   };
 
