@@ -7,7 +7,7 @@ const Demo = () => {
   let count=0
 
 const increment=()=>{
-
+count=count+1
 }
 
   return (
