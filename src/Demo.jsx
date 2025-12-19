@@ -17,7 +17,14 @@ const Demo = () => {
       <div style={{ display: "flex" }}>
         <ul>
           {items.map((item, index) => {
-            return <li key={index}>{item}</li>;
+            return (
+              <li key={index}>
+                
+                  {item}
+                  <button>Remove</button>
+                
+              </li>
+            );
           })}
         </ul>
       </div>
