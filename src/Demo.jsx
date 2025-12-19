@@ -26,7 +26,7 @@ const Demo = () => {
             return (
               <li key={index}>
                 {item}
-                <button onClick={() => handleDelete(index)}>Remove</button>
+                <button onClick={() => handleDelete(item.index)}>Remove</button>
               </li>
             );
           })}
