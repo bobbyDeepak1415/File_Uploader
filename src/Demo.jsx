@@ -10,9 +10,11 @@ const Demo = () => {
     setInput("");
   };
 
-  const handleDelete=()=>{
-    
-  }
+  const handleDelete = (index) => {
+    const filteredItems = items.filter((_, i) => i !== index);
+
+    setItems(filteredItems);
+  };
 
   return (
     <div>
@@ -24,7 +26,7 @@ const Demo = () => {
             return (
               <li key={index}>
                 {item}
-                <button onClick={()=>handleDelete(index)}>Remove</button>
+                <button onClick={() => handleDelete(index)}>Remove</button>
               </li>
             );
           })}
