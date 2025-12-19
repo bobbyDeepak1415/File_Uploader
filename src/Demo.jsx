@@ -10,6 +10,10 @@ const Demo = () => {
     setInput("");
   };
 
+  const handleDelete=()=>{
+    
+  }
+
   return (
     <div>
       <input value={input} onChange={(e) => setInput(e.target.value)}></input>
@@ -19,10 +23,8 @@ const Demo = () => {
           {items.map((item, index) => {
             return (
               <li key={index}>
-                
-                  {item}
-                  <button>Remove</button>
-                
+                {item}
+                <button onClick={()=>handleDelete(index)}>Remove</button>
               </li>
             );
           })}
