@@ -7,7 +7,7 @@ const Demo = () => {
   const fetchData = async () => {
     try {
       const data = await axios.get("https://dummyjson.com/products");
-      setProducts(data.data);
+      setProducts(data.data.products);
     } catch (e) {
       console.error("failed fetching...", e);
     }
@@ -19,8 +19,8 @@ const Demo = () => {
 
   return (
     <div>
-      {products.map((product, id) => {
-        return <li key={id}>{product.name}</li>;
+      {products.map((product) => {
+        return <li key={product.id}>{product.title}</li>;
       })}
     </div>
   );
