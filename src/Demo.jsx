@@ -6,9 +6,7 @@ const Demo = () => {
 
   const fetchData = async () => {
     try {
-      const data = await axios.get(
-        "https://jsonplaceholder.typicode.com/comments"
-      );
+      const data = await axios.get("https://dummyjson.com/products");
       setProducts(data.data);
     } catch (e) {
       console.error("failed fetching...", e);
