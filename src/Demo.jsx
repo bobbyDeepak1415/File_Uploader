@@ -1,30 +1,22 @@
-import { useState } from "react";
+// import React from "react";
 
-const studentsList = [
-  { rollNo: 1111, name: "name1" },
-  { rollNo: 2222, name: "name2" },
-];
+// function Demo() {
+//   return <div></div>;
+// }
 
-export default function Demo() {
-  const [students, setStudents] = useState(studentsList);
+// export default Demo;
 
-  function updateStudentName(rollNo: number, name: string) {
-    setStudents((prev) =>
-      prev.map((student) =>
-        student.rollNo === rollNo ? { ...student, name } : student
-      )
-    );
+// let arr1 = student.forEach((student) => {
+//   if (student.rollNo === rollNo) {
+//     student.name = name;
+//   }
+// });
 
-    console.log(students)
-  }
+//let  studentsList = [{ rollNo: 1111, name: 'name1' }, { rollNo: 2222, name: 'name2' }]
+//
+// const [student, setStudent] = useState(studentsList); function updateStudentName(rollNo,name){
 
-  return (
-    <div>
-      <pre>{JSON.stringify(students, null, 2)}</pre>
+// setStudent(prev=>prev.map(student=>student.map))
 
-      <button onClick={() => updateStudentName(1111, "Bobby")}>
-        Update 1111 → Bobby
-      </button>
-    </div>
-  );
-}
+
+// }
