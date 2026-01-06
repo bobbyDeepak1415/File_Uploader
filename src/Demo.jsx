@@ -14,9 +14,12 @@
 
 //let  studentsList = [{ rollNo: 1111, name: 'name1' }, { rollNo: 2222, name: 'name2' }]
 //
-// const [student, setStudent] = useState(studentsList); function updateStudentName(rollNo,name){
+// const [student, setStudent] = useState(studentsList);
+//
+// function updateStudentName(rollNo,name){
 
-// setStudent(prev=>prev.map(student=>student.map))
+// setStudent(prev=>prev.map(student)=>student.rolNo===rollNo ? {...student,name} : student)
 
 
 // }
+
