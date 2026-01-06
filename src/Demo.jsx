@@ -18,7 +18,7 @@
 //
 // function updateStudentName(rollNo,name){
 
-// setStudent(prev=>prev.map(student)=>student.rolNo===rollNo ? {...student,name} : student)
+
 
 
 // }
