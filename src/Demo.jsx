@@ -20,6 +20,6 @@
 
 
 
-// setStudent()
+// setStudent(prev=>prev.map(student=>student.rollNo===rollNo? {...student,name}:student))
 // }
 
