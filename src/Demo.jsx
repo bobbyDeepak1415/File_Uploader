@@ -1,18 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-let index = 0;
 const useDemo = () => {
   const [currentStatus, setCurrentStatus] = useState("");
 
   const status = ["active", "offline", "busy", "unKnown"];
 
-  const IndexRef=useRef(0)
 
+const indexRef=useRef(0)
 
-  setInterval(() => {
-    setCurrentStatus(status[index]);
-    index = (index + 1) % status.length;
+useEffect(()=>{
+
+  const interValId= setInterval(() => {
+    setCurrentStatus(status[indexRef.current]);
+    indexRef.current = (indexRef.current + 1) % status.length;
   }, 1000);
+
+  return ()=>clearInterval(interValId)
+
+})
 
   return <p>{currentStatus}</p>;
 };
