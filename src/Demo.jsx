@@ -11,9 +11,8 @@ const useDemo = () => {
     });
   }, 2000);
 
-  return currentStatus;
+  return <p>{currentStatus}</p>
 };
 
 export default useDemo;
 
-...
