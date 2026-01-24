@@ -7,6 +7,8 @@ const Demo = () => {
 
   const stages = ["Backlogs", "Todo", "Ongoing", "Done"];
 
+  const [dragData,setDragData]=useState("")
+
   const handleAddTask = (e) => {
     e.preventDefault();
     if (!newTask.trim()) return;
@@ -29,14 +31,38 @@ const Demo = () => {
 
   const moveTask = (stageIndex, taskIndex, direction) => {
     const updatedStages = taskStages.map((taskStage) => [...taskStage]);
-
+    
     const movedTask = updatedStages[stageIndex][taskIndex];
-
+    
     updatedStages[stageIndex].splice(taskIndex, 1);
     updatedStages[stageIndex + direction].push(movedTask);
-
+    
     setTaskStages(updatedStages);
-  };
+};
+
+const handleDragStart=(stageIndex,taskIndex)=>{
+    setDragData({stageIndex,taskIndex})
+}
+
+const handleDrop=(stageIndex)=>{
+
+    if(!dragData) return
+      const updatedStages = taskStages.map((taskStage) => [...taskStage]);
+
+    const {stageIndex:fromStage,taskIndex}=dragData
+
+    if(fromStage===stageIndex) return
+
+    const [movedTask]=updatedStages[fromStage].splice(taskIndex,1)
+
+    updatedStages[stageIndex].push(movedTask)
+    setTaskStages(updatedStages)
+
+    setDragData(null)
+
+
+
+  }
 
   return (
     <div className="h-[100vh] bg-gray-400 flex flex-col">
@@ -56,6 +82,7 @@ const Demo = () => {
           return (
             <div
               onDragOver={(e) => e.preventDefault()}
+              onDrop={()=>handleDrop(stageIndex)}
 
               className="h-[70vh] border-2 w-[20vw] m-auto border-black flex flex-col"
               key={stageIndex}
@@ -67,6 +94,7 @@ const Demo = () => {
                     <li
                       className="flex justify-center gap-2"
                       draggable
+                      onDragStart={()=>handleDragStart(stageIndex,taskIndex)}
                       key={taskIndex}
                     >
                       <span>{task.name}</span>
