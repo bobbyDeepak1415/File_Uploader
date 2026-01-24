@@ -20,6 +20,13 @@ const Demo = () => {
     setNewTask("");
   };
 
+  const handleDelete = (stageIndex, taskIndex) => {
+    const updatedStages = taskStages.map((taskStage) => [...taskStage]);
+
+    updatedStages[stageIndex].splice(taskIndex, 1);
+    setTaskStages(updatedStages);
+  };
+
   return (
     <div className="h-[100vh] bg-gray-400 flex flex-col">
       <div className="p-4 mb-8">
@@ -42,14 +49,18 @@ const Demo = () => {
             >
               <h1 className="text-lg">{stage}</h1>
               <ul>
-                {taskStages.map((task, taskIndex) => {
+                {taskStages[stageIndex].map((task, taskIndex) => {
                   return (
                     <li key={taskIndex}>
                       <span>{task.name}</span>
                       <span>
                         <button>⬅️</button>
                         <button>➡️</button>
-                        <button onClick={}>❌</button>
+                        <button
+                          onClick={() => handleDelete(stageIndex, taskIndex)}
+                        >
+                          ❌
+                        </button>
                       </span>
                     </li>
                   );
