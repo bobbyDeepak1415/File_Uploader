@@ -27,6 +27,17 @@ const Demo = () => {
     setTaskStages(updatedStages);
   };
 
+  const moveTask = (stageIndex, taskIndex, direction) => {
+    const updatedStages = taskStages.map((taskStage) => [...taskStage]);
+
+    const movedTask = updatedStages[stageIndex][taskIndex];
+
+    updatedStages[stageIndex].splice(taskIndex, 1);
+    updatedStages[stageIndex + direction].push(movedTask);
+
+    setTaskStages(updatedStages);
+  };
+
   return (
     <div className="h-[100vh] bg-gray-400 flex flex-col">
       <div className="p-4 mb-8">
@@ -44,6 +55,8 @@ const Demo = () => {
         {stages.map((stage, stageIndex) => {
           return (
             <div
+              onDragOver={(e) => e.preventDefault()}
+
               className="h-[70vh] border-2 w-[20vw] m-auto border-black flex flex-col"
               key={stageIndex}
             >
@@ -51,11 +64,23 @@ const Demo = () => {
               <ul>
                 {taskStages[stageIndex].map((task, taskIndex) => {
                   return (
-                    <li key={taskIndex}>
+                    <li
+                      className="flex justify-center gap-2"
+                      draggable
+                      key={taskIndex}
+                    >
                       <span>{task.name}</span>
                       <span>
-                        <button>⬅️</button>
-                        <button>➡️</button>
+                        <button
+                          onClick={() => moveTask(stageIndex, taskIndex, -1)}
+                        >
+                          ⬅️
+                        </button>
+                        <button
+                          onClick={() => moveTask(stageIndex, taskIndex, 1)}
+                        >
+                          ➡️
+                        </button>
                         <button
                           onClick={() => handleDelete(stageIndex, taskIndex)}
                         >
