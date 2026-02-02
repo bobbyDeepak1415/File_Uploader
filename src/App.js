@@ -1,5 +1,5 @@
 import "./App.css";
-import Demo from './Demo';
+// import Demo from './Demo';
 import FileUploader from "./FileUploader";
 
 function App() {
