@@ -19,37 +19,11 @@ export default function Demo() {
     { id: 15, name: "Canon Camera" },
   ];
 
-  const [query, setQuery] = useState("");
+  return <>
+  <div>
+    {products}
+  </div>
+  </>
 
-  // DERIVED STATE: Filter the original list every time 'query' changes
-  // We use .toLowerCase() to make the search case-insensitive
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(query.toLowerCase()),
-  );
-
-  return (
-    <div
-      style={{ padding: "20px", height: "100vh", backgroundColor: "slategrey" }}
-    >
-      <label>Search Products: </label>
-      <input
-        style={{ border: "1px solid", padding: "5px" }}
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Type to search..."
-      />
-
-      <hr />
-
-      {filteredProducts.length > 0 ? (
-        filteredProducts.map((product) => (
-          <ul>
-            <li key={product.id}>{product.name}</li>
-          </ul>
-        ))
-      ) : (
-        <p>No results found.</p>
-      )}
-    </div>
-  );
+ ;
 }
