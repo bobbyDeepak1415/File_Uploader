@@ -34,7 +34,13 @@ export default function Demo() {
           onChange={(e) => setQuery(e.target.value)}
         ></input>
         <ul>
-        
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => {
+              return <li key={product.id}>{product.name}</li>;
+            })
+          ) : (
+            <h2>No results found</h2>
+          )}
         </ul>
       </div>
     </>
