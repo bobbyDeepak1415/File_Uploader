@@ -34,9 +34,7 @@ export default function Demo() {
           onChange={(e) => setQuery(e.target.value)}
         ></input>
         <ul>
-          {filteredProducts.map((product) => {
-            return <li key={product.id}>{product.name}</li>;
-          })}
+        
         </ul>
       </div>
     </>
