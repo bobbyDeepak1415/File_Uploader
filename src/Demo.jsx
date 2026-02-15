@@ -22,11 +22,19 @@ export default function Demo() {
     { id: 15, name: "Canon Camera" },
   ];
 
-  const filteredProducts=products.map(product=>product.name).filter().includes(query)
+  const filteredProducts=products.filter(product=>product.name.toLocaleLowerCase().includes(query))
 
   return <>
   <div>
-    {filteredProducts.map((product))}
+    {filteredProducts.map((product)=>{
+      <ul>
+
+      return <li>
+        {product.name}
+
+      </li>
+      </ul>
+    })}
 
     <input value={query} onChange={(e)=>setQuery(e.target.value)}></input>
   </div>
