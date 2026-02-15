@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 export default function Demo() {
-
-  const [query,setQuery]=useState("")
+  const [query, setQuery] = useState("");
 
   const products = [
     { id: 1, name: "MacBook Pro" },
@@ -22,23 +21,24 @@ export default function Demo() {
     { id: 15, name: "Canon Camera" },
   ];
 
-  const filteredProducts=products.filter(product=>product.name.toLocaleLowerCase().includes(query))
+  const filteredProducts = products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(query),
+  );
 
-  return <>
-  <div>
-    {filteredProducts.map((product)=>{
-      <ul>
-
-      return <li>
-        {product.name}
-
-      </li>
-      </ul>
-    })}
-
-    <input value={query} onChange={(e)=>setQuery(e.target.value)}></input>
-  </div>
-  </>
-
- ;
+  return (
+    <>
+      <div>
+        <input
+          className="h-50 border-2 border-black"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        ></input>
+        <ul>
+          {filteredProducts.map((product) => {
+            return <li key={product.id}>{product.name}</li>;
+          })}
+        </ul>
+      </div>
+    </>
+  );
 }
