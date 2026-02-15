@@ -28,7 +28,7 @@ export default function Demo() {
   );
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px",height:"100vh",backgroundColor:"slategrey" }}>
       <label>Search Products: </label>
       <input
         style={{ border: "1px solid", padding: "5px" }}
