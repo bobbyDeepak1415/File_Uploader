@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 export default function Demo() {
+
+  const [query,setQuery]=useState("")
+
   const products = [
     { id: 1, name: "MacBook Pro" },
     { id: 2, name: "iPhone 15" },
@@ -19,9 +22,13 @@ export default function Demo() {
     { id: 15, name: "Canon Camera" },
   ];
 
+  const filteredProducts=products.map(product=>product.name).filter().includes(query)
+
   return <>
   <div>
-    {products}
+    {filteredProducts.map((product))}
+
+    <input value={query} onChange={(e)=>setQuery(e.target.value)}></input>
   </div>
   </>
 
