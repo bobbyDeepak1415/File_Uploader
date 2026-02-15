@@ -28,7 +28,9 @@ export default function Demo() {
   );
 
   return (
-    <div style={{ padding: "20px",height:"100vh",backgroundColor:"slategrey" }}>
+    <div
+      style={{ padding: "20px", height: "100vh", backgroundColor: "slategrey" }}
+    >
       <label>Search Products: </label>
       <input
         style={{ border: "1px solid", padding: "5px" }}
@@ -41,8 +43,8 @@ export default function Demo() {
 
       {filteredProducts.length > 0 ? (
         filteredProducts.map((product) => (
-          <ul key={product.id}>
-            <li>{product.name}</li>
+          <ul>
+            <li key={product.id}>{product.name}</li>
           </ul>
         ))
       ) : (
