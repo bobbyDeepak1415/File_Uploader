@@ -20,5 +20,9 @@ export default function Demo() {
     { id: 14, name: "OnePlus Nord" },
     { id: 15, name: "Canon Camera" },
   ];
-
-  
+return(
+  <div>
+    <input className="border-2 "></input>
+  </div>
+)
+}
