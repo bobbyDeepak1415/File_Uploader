@@ -20,9 +20,13 @@ export default function Demo() {
     { id: 14, name: "OnePlus Nord" },
     { id: 15, name: "Canon Camera" },
   ];
-return(
-  <div>
-    <input className="border-2 border-black" value={query}></input>
-  </div>
-)
+  return (
+    <div>
+      <input
+        className="border-2 border-black"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      ></input>
+    </div>
+  );
 }
