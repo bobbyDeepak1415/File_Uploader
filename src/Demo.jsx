@@ -21,7 +21,9 @@ export default function Demo() {
     { id: 15, name: "Canon Camera" },
   ];
 
-  const filteredProducts=[]
+  const filteredProducts = products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(query),
+  );
 
   return (
     <div>
@@ -30,8 +32,8 @@ export default function Demo() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       ></input>
-      {filteredProducts.map((prod)=>{
-        return <li key={prod.id}>{prod.name}</li>
+      {filteredProducts.map((prod) => {
+        return <li key={prod.id}>{prod.name}</li>;
       })}
     </div>
   );
