@@ -21,28 +21,4 @@ export default function Demo() {
     { id: 15, name: "Canon Camera" },
   ];
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLocaleLowerCase().includes(query),
-  );
-
-  return (
-    <>
-      <div>
-        <input
-          className="h-50 border-2 border-black"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        ></input>
-        <ul>
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => {
-              return <li key={product.id}>{product.name}</li>;
-            })
-          ) : (
-            <h2>No results found</h2>
-          )}
-        </ul>
-      </div>
-    </>
-  );
-}
+  
