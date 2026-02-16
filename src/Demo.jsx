@@ -22,7 +22,7 @@ export default function Demo() {
   ];
 return(
   <div>
-    <input className="border-2 "></input>
+    <input className="border-2 border-black" value={query}></input>
   </div>
 )
 }
