@@ -20,6 +20,9 @@ export default function Demo() {
     { id: 14, name: "OnePlus Nord" },
     { id: 15, name: "Canon Camera" },
   ];
+
+  const filteredProducts=[]
+
   return (
     <div>
       <input
@@ -27,6 +30,9 @@ export default function Demo() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       ></input>
+      {filteredProducts.map((prod)=>{
+        return <li key={prod.id}>{prod.name}</li>
+      })}
     </div>
   );
 }
