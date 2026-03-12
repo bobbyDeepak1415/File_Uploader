@@ -23,7 +23,7 @@ const DeleteThis = () => {
 
   const [query,setQuery]=useState("")
 
-  const filteredProducts=[]
+  const filteredProducts=products.filter((product)=>product.name.toLowerCase().includes(query.toLocaleLowerCase()))
 
   return (
     <div style={{backgroundColor:"gray",height:"100vh"}}>
