@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-
+import React, { useState } from "react";
 
 const products = [
   { id: 1, name: "MacBook Pro" },
@@ -20,19 +19,19 @@ const products = [
 ];
 
 const DeleteThis = () => {
+  const [query, setQuery] = useState("");
 
-  const [query,setQuery]=useState("")
-
-  const filteredProducts=products.filter((product)=>product.name.toLowerCase().includes(query.toLocaleLowerCase()))
-
+  
   return (
-    <div style={{backgroundColor:"gray",height:"100vh"}}>
-      <input value={query} onChange={(e)=>setQuery(e.target.value)}></input>
-      <div>{filteredProducts.map((product)=>{
-        return <li key={product.id}>{product.name}</li>
-      })}</div>
+    <div style={{ backgroundColor: "gray", height: "100vh" }}>
+      <input value={query} onChange={(e) => setQuery(e.target.value)}></input>
+      <div>
+        {products.map((product) => {
+          return <li key={product.id}>{product.name}</li>;
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default DeleteThis
+export default DeleteThis;
