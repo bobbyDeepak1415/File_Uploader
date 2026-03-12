@@ -22,7 +22,7 @@ export default function Demo() {
   ];
 
   const filteredProducts = products.filter((product) =>
-    product.name.toLocaleLowerCase().includes(query),
+    product.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
   );
 
   return (

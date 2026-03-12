@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+with respect to debugging, i use good clean coding practices like early validation and systematic debugging. i use eslint and prettier to catch and prevent issues early on in the prduction phase. i also validate apis and handle edge cases up front before pushing it into the furthur pipeline. 
