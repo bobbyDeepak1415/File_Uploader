@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 const products = [
@@ -21,11 +21,14 @@ const products = [
 
 const DeleteThis = () => {
 
-  const []
+  const [query,setQuery]=useState("")
 
   return (
     <div>
-      Hello
+      <input value={query} onChange={(e)=>setQuery(e.target.value)}></input>
+      <div>{products.map((product)=>{
+        return <li key={product.id}>{product.name}</li>
+      })}</div>
     </div>
   )
 }
