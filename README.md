@@ -69,7 +69,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-react router dom handles navigation between different routes lke /products, /product/:id etc. whenever a page loads the useEffect dispatches an async thunk using useDispatch. this async thunk is created using the create Async thunk.the async thunk makes a rest api call via axios. based on the results, actions are dispatched which are handled inside of the redux toolit slices ex: cartslice, productsSlice etc. once then the data is stored in the global store.then the components subscribed to the relavant state using useSelector gets updated dynamically when the data changes
-
-The data flow worked like this: React Router handled navigation between routes like /products and /product/:id. When a page loaded, useEffect dispatches an async thunk using useDispatch which is created using createAsyncThunk and this in turn makes a rest API call via Axios and the based on the results actions are dispatched which are handled inside the slices like productSlice, cartSlice etc and then the data is stored in the global store . The components subscribed to the relevant Redux state using useSelector, ensuring they automatically updated when data changed.
 
