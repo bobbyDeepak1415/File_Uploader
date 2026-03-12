@@ -71,6 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-react router dom handles navigation between different routes lke /products, /product/:id etc. whenever a page loads the useEffect dispatches an async thunk using useDispatch. this async thunk is created using the create Async thunk.
+react router dom handles navigation between different routes lke /products, /product/:id etc. whenever a page loads the useEffect dispatches an async thunk using useDispatch. this async thunk is created using the create Async thunk.the async thunk makes a rest api call via axios. we make use of a custom Hook, because here the problem statement is to keep the codebase compact, so we make use of as many reusable components as possible. we dont want to make an api call everytime the user types in something or puts on a filter or sort according to any offers or sort according to customer rating or prices etc. so we use a custom hook to fetch data across all requirements and then depending on the results these results are passed as initial state and this initialstate is passed into the redux toolkit slice as state along with reducers. 
 
 
