@@ -29,13 +29,9 @@ const DeleteThis = () => {
     <div style={{ backgroundColor: "gray", height: "100vh" }}>
       <input value={query} onChange={(e) => setQuery(e.target.value)}></input>
       <div>
-        {filteredProducts.length
-          ? filteredProducts.map((product) => {
-              return <li key={product.id}>{product.name}</li>;
-            })
-          : products.map((product) => {
-              return <li key={product.id}>{product.name}</li>;
-            })}
+        {filteredProducts.map((product) => {
+          return <li key={product.id}>{product.name}</li>;
+        })}
       </div>
     </div>
   );
