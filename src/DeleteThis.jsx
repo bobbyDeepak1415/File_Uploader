@@ -23,10 +23,12 @@ const DeleteThis = () => {
 
   const [query,setQuery]=useState("")
 
+  const filteredProducts=[]
+
   return (
-    <div>
+    <div style={{backgroundColor:"gray",height:"100vh"}}>
       <input value={query} onChange={(e)=>setQuery(e.target.value)}></input>
-      <div>{products.map((product)=>{
+      <div>{filteredProducts.map((product)=>{
         return <li key={product.id}>{product.name}</li>
       })}</div>
     </div>
