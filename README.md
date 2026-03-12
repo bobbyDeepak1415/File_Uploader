@@ -71,6 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-
+react router dom handles navigation between different routes lke /products, /product/:id etc. whenever a page loads the useEffect dispatches an async thunk using useDispatch. this async thunk is created using the create Async thunk.
 
 
