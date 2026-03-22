@@ -1,5 +1,11 @@
+import DemoChild from "./DemoChild";
+
 const Demo = () => {
-  return <div></div>;
+  return <div>
+
+<DemoChild/>
+
+  </div>;
 };
 
 export default Demo;
