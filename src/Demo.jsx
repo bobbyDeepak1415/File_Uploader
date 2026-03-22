@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import handleClick from "./handleClick";
 
 const Demo = () => {
   const [count, setCount] = useState(0);
@@ -11,8 +10,15 @@ const Demo = () => {
   return (
     <div>
       <button onClick={handleClick}>
-        click <span>{count}</span>
+        click
       </button>
+      <div>
+        <li>
+
+        {count}
+        </li>
+
+      </div>
     </div>
   );
 };
