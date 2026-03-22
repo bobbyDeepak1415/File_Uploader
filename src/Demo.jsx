@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
 const Demo = () => {
-  const [count, setCount] = useState([0, 1]);
+  const [count, setCount] = useState([]);
+
+  // [1]
+  // [1,2]
+  // [1,2,3]
 
   const handleClick = () => {
-    setCount((prev) => [...prev,prev.length+1]);
+    setCount((prev) => [...prev, prev.length + 1]);
   };
 
   return (
