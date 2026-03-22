@@ -7,8 +7,10 @@ function App() {
     <div className="App">
       {/* <FileUploader /> */}
       <Demo />
+      
     </div>
   );
 }
 
 export default App;
+...
