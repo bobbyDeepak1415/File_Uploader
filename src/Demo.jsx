@@ -5,8 +5,8 @@ const Demo = () => {
   const [count, setCount] = useState(1);
 
   const memoizedClick = useCallback(() => {
-    handleClick(setCount, count);
-  }, [setCount, count]);
+    handleClick(setCount);
+  }, [setCount]);
 
   return (
     <div>
