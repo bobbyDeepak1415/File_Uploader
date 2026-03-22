@@ -1,6 +1,5 @@
-const handleClick = (setItem) => {
-  setItem((prev) => prev * 10);
+const handleClick = (setCount, count) => {
+  setCount(count + 1);
 };
 
-
-export default handleClick
+export default handleClick;

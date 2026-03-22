@@ -1,18 +1,18 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import handleClick from "./handleClick";
 
 const Demo = () => {
-  const [item, setItem] = useState(1);
+  const [count, setCount] = useState(1);
 
-  const memoized = useCallback(() => {
-    handleClick(setItem);
-  }, [setItem]);
+  const memoizedClick = useCallback(() => {
+    handleClick(setCount, count);
+  }, [setCount, count]);
 
   return (
     <div>
-      <button onClick={memoized}>Click</button>
+      <button onClick={memoizedClick}>click</button>
 
-      <p>{item}</p>
+      <p>{count}</p>
     </div>
   );
 };
