@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 
 const Demo = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState([]);
 
   const handleClick = () => {
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
+    setCount((prev) => prev);
   };
 
   return (
@@ -14,7 +12,9 @@ const Demo = () => {
       <button onClick={handleClick}>click</button>
       <div>
         <ul>
-          <li>{count}</li>
+          {count.map((count) => {
+            return <li>{count}</li>;
+          })}
         </ul>
       </div>
     </div>
