@@ -5,19 +5,17 @@ const Demo = () => {
 
   const handleClick = () => {
     setCount((prev) => prev + 1);
+    setCount((prev) => prev + 1);
+    setCount((prev) => prev + 1);
   };
 
   return (
     <div>
-      <button onClick={handleClick}>
-        click
-      </button>
+      <button onClick={handleClick}>click</button>
       <div>
-        <li>
-
-        {count}
-        </li>
-
+        <ul>
+          <li>{count}</li>
+        </ul>
       </div>
     </div>
   );
