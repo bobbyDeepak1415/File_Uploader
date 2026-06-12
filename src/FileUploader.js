@@ -1,12 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 function FileUploader(props) {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState(() => {
+    const files = localStorage.getItem("files");
+    return files ?  JSON.parse(files) :[];  
+  });
   const inputFileRef = useRef(null);
 
-  // useEffect(() => {
-  //   localStorage.setItem("files", JSON.stringify(files));
-  // }, [files]);
+  useEffect(() => {
+    localStorage.setItem("files", JSON.stringify(files));
+  }, [files]);
 
   const handleSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
@@ -29,17 +32,15 @@ function FileUploader(props) {
     e.stopPropagation();
   };
 
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    const fileData = droppedFiles.map((file) => {
+      return { name: file.name };
+    });
 
-
-  // const handleDrop = (e) => {
-  //   e.preventDefault();
-  //   const droppedFiles = Array.from(e.dataTransfer.files);
-  //   const fileData = droppedFiles.map((file) => {
-  //     return { name: file.name };
-  //   });
-
-  //   setFiles((prev) => [...prev, ...fileData]);
-  // };
+    setFiles((prev) => [...prev, ...fileData]);
+  };
 
   return (
     <div>
@@ -55,7 +56,7 @@ function FileUploader(props) {
       <div
         onDragEnter={handleDefaults}
         onDragOver={handleDefaults}
-        onDrop={(e)=>e.preventDefault()}
+        onDrop={handleDrop}
         style={{ padding: "100px", border: "1px dashed", margin: "10px" }}
       >
         Drop Your files here
