@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 function FileUploader(props) {
-  const [files, setFiles] = useState(() => {
-    try {
-      const localArr = localStorage.getItem("files");
-      return localArr ? JSON.parse(localArr) : [];
-    } catch (er) {
-      console.error("not found", er);
-    }
-  });
+  const [files, setFiles] = useState([]);
   const inputFileRef = useRef(null);
 
   useEffect(() => {
