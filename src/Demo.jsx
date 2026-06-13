@@ -1,8 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Demo = () => {
-  const [files, setFiles] = useState([]);
-  const inputFileRef = useRef(null);
+  const [files, setFiles] = useState(()=>{
+    const files=localStorage.getItem("files")
+    return files? JSON.parse(files) :[]
+  });
+
+
+
+
 
   const handleSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
@@ -19,10 +25,21 @@ const Demo = () => {
     inputFileRef.current.value = "";
   };
 
-  const handleDefaults=(e)=>{
-    e.preventDefault()
-  }
+  const handleDefaults = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const droppedFiles = Array.from(e.dataTransfer.files);
+
+    const fileData = droppedFiles.map((file) => {
+      return { name: file.name };
+    });
+
+    setFiles((prev) => [...prev, ...fileData]);
+  };
 
   return (
     <div>
@@ -45,20 +62,20 @@ const Demo = () => {
           border: "1px dashed",
           margin: "auto",
           marginTop: "40px",
-          
         }}
         onDragEnter={handleDefaults}
         onDragOver={handleDefaults}
-        onDrop={}
-
+        onDrop={handleDrop}
       >
         Drop Your Files Here
       </div>
 
       <div>
-        {files.map((file, index) => {
-          return <li key={index}>{file.name}</li>;
-        })}
+        <ul>
+          {files.map((file, index) => {
+            return <li key={index}>{file.name}</li>;
+          })}
+        </ul>
       </div>
     </div>
   );
