@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const Demo = () => {
-  const [files, setFiles] = useState(()=>{
-    const files=localStorage.getItem("files")
-    return files? JSON.parse(files) :[]
+  const [files, setFiles] = useState(() => {
+    const files = localStorage.getItem("files");
+    return files ? JSON.parse(files) : [];
   });
 
+  useEffect(() => {
+    localStorage.setItem("", JSON.stringify(files));
+  }, [files]);
 
-
-
+  const inputFileRef = useRef(null);
 
   const handleSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);

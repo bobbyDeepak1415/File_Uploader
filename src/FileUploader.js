@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 function FileUploader(props) {
   const [files, setFiles] = useState(() => {
     const files = localStorage.getItem("files");
-    return files ?  JSON.parse(files) :[];  
+    return files ? JSON.parse(files) : [];
   });
   const inputFileRef = useRef(null);
 
