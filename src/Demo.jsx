@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const Demo = () => {
-  return <div></div>;
+
+  const inputFileRef=useRef(null)
+
+  return <div>
+
+    <input hidden type="file" ref={inputFileRef} multiple />
+    <button>Browse Files</button>
+
+  </div>;
 };
 
 export default Demo;
