@@ -5,23 +5,37 @@ const Demo = () => {
 
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-
-  const handleSelect=()=>{
-    
-  }
+  const handleSelect = (e) => {
+    const files = e.target.files;
+    setSelectedFiles((prev) => [...prev, ...files]);
+  };
 
   const handleClick = () => {
     inputFileRef.current.click();
     inputFileRef.current.value = "";
   };
 
+  const handleDefaults = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
     <div>
-      <input onChange={handleSelect} hidden type="file" ref={inputFileRef} multiple />
+      <input
+        onChange={handleSelect}
+        hidden
+        type="file"
+        ref={inputFileRef}
+        multiple
+      />
       <button onClick={handleClick}>Browse Files</button>
 
       <div>
         <div
+          onDragEnter={handleDefaults}
+          onDragOver={handleDefaults}
+          onDrop={handleDrop}
           style={{
             display: "flex",
             justifyContent: "center",
@@ -38,7 +52,7 @@ const Demo = () => {
         <div>
           <ul>
             {selectedFiles.map((file) => {
-              return <li>{file.name}</li>;
+              return <li key={file.id}>{file.name}</li>;
             })}
           </ul>
         </div>
