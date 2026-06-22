@@ -1,15 +1,50 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const Demo = () => {
+  const inputFileRef = useRef(null);
 
-  const inputFileRef=useRef(null)
+  const [selectedFiles, setSelectedFiles] = useState([]);
 
-  return <div>
 
-    <input hidden type="file" ref={inputFileRef} multiple />
-    <button>Browse Files</button>
+  const handleSelect=()=>{
+    
+  }
 
-  </div>;
+  const handleClick = () => {
+    inputFileRef.current.click();
+    inputFileRef.current.value = "";
+  };
+
+  return (
+    <div>
+      <input onChange={handleSelect} hidden type="file" ref={inputFileRef} multiple />
+      <button onClick={handleClick}>Browse Files</button>
+
+      <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            border: "1px dashed",
+            height: "50vh",
+            width: "80vw",
+            margin: "auto",
+            marginTop: "2rem",
+          }}
+        >
+          Drop your files here
+        </div>
+        <div>
+          <ul>
+            {selectedFiles.map((file) => {
+              return <li>{file.name}</li>;
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Demo;
