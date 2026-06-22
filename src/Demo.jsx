@@ -1,13 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Demo = () => {
   const inputFileRef = useRef(null);
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [selectedFiles, setSelectedFiles] = useState(() => {
+    const files = localStorage.getItem("selectedFiles");
+    return files ? JSON.parse(files) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("selectedFiles", JSON.stringify(selectedFiles));
+  }, [selectedFiles]);
 
   const handleSelect = (e) => {
-    const files = e.target.files;
-    setSelectedFiles((prev) => [...prev, ...files]);
+    const files = Array.from(e.target.files);
+
+    const fileData = files.map((file) => {
+      return {
+        name: file.name,
+      };
+    });
+
+    setSelectedFiles((prev) => [...prev, ...fileData]);
   };
 
   const handleClick = () => {
@@ -18,6 +32,13 @@ const Demo = () => {
   const handleDefaults = (e) => {
     e.preventDefault();
     e.stopPropagation();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+
+    setSelectedFiles((prev) => [...prev, ...files]);
   };
 
   return (
