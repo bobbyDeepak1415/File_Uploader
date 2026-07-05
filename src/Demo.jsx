@@ -4,12 +4,8 @@ const Demo = () => {
   const inputFileRef = useRef(null);
 
   const [selectedFiles, setSelectedFiles] = useState(() => {
-    try {
-      const files = localStorage.getItem("selectedFiles");
-      return files ? JSON.parse(files) : [];
-    } catch (er) {
-      console.log("failed To fetch", er);
-    }
+    const files = localStorage.getItem("selectedFiles");
+    return files ? JSON.parse(files) : [];
   });
 
   useEffect(() => {
@@ -18,7 +14,6 @@ const Demo = () => {
 
   const handleClick = () => {
     inputFileRef.current.click();
-    inputFileRef.current.value = "";
   };
 
   const handleChange = (e) => {
