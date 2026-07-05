@@ -1,20 +1,38 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const Demo = () => {
   const inputFileRef = useRef();
+
+  const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleClick = () => {
     inputFileRef.current.click();
     inputFileRef.current.value = "";
   };
 
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    setSelectedFiles((prev) => [...prev, ...e.target.files]);
+  };
+
   return (
     <div>
-      <h2>
-        FileUpLoader
-        <input ref={inputFileRef} type="file" hidden multiple />
-        <button onClick={handleClick}>Click</button>
-      </h2>
+      <input
+        onChange={handleChange}
+        ref={inputFileRef}
+        type="file"
+        hidden
+        multiple
+      />
+      <button onClick={handleClick}>Add Files</button>
+      <div>
+        <ul>
+          {selectedFiles.map((file) => {
+            return <li key={file.id}>{file.name}</li>;
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
