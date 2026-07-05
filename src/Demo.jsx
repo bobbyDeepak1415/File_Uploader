@@ -17,9 +17,15 @@ const Demo = () => {
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
+    const fileData = Array.from(e.target.files);
 
-    setSelectedFiles((prev) => [...prev, ...e.target.files]);
+    const fileNames = fileData.map((file) => {
+      return {
+        name: file.name,
+      };
+    });
+
+    setSelectedFiles((prev) => [...prev, ...fileNames]);
   };
 
   return (
