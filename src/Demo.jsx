@@ -3,7 +3,15 @@ import React, { useRef, useState } from "react";
 const Demo = () => {
   const inputFileRef = useRef();
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [selectedFiles, setSelectedFiles] = useState(()=>{
+    try{
+
+      const files=localStorage.getItem("selectedFiles")
+      return files ? JSON.parse(files) : []
+    }catch(er){
+      console.log("failed To fetch",er)
+    }
+  });
 
   const handleClick = () => {
     inputFileRef.current.click();
