@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const Demo = () => {
-  const inputFileRef = useRef();
+  const inputFileRef = useRef(null);
 
   const [selectedFiles, setSelectedFiles] = useState(() => {
     try {
@@ -14,7 +14,7 @@ const Demo = () => {
 
   useEffect(() => {
     localStorage.setItem("selectedFiles", JSON.stringify(selectedFiles));
-  }, []);
+  }, [selectedFiles]);
 
   const handleClick = () => {
     inputFileRef.current.click();
