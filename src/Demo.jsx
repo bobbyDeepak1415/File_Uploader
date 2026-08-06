@@ -5,6 +5,13 @@ const Demo = () => {
 
   const [files, setFiles] = useState([]);
 
+  // const [files, setFiles] = useState(()=>{
+  //   const files=localStorage.getItem("files")
+  //   return files ? JSON.parse(files) : []
+  // });
+
+  // useEffect()
+
   const handleSelect = (e) => {
     e.preventDefault();
     const selectedFiles = Array.from(e.target.files);
