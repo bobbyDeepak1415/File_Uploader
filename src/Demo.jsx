@@ -5,7 +5,6 @@ const Demo = () => {
 
   const [files, setFiles] = useState([]);
 
-  
   const handleSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
     const fileNames = selectedFiles.map((file) => {
@@ -21,6 +20,22 @@ const Demo = () => {
     inputFileRef.current.value = "";
   };
 
+  const handleDrop = (e) => {
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    const fileNames = droppedFiles.map((file) => {
+      return {
+        name: file.name,
+      };
+    });
+
+    setFiles((prev) => [...prev, fileNames]);
+  };
+
+  const handleDefaults = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   return (
     <div>
       <input
@@ -31,6 +46,15 @@ const Demo = () => {
         onChange={handleSelect}
       />
       <button onClick={handleClick}>Browse files</button>
+
+      <div
+        className="h-80 w-[80vw] m-auto border-2 border-neutral-900 border-dashed"
+        onDrop={handleDrop}
+        onDragEnter={handleDefaults}
+        onDragOver={handleDefaults}
+      >
+        Drop your files here
+      </div>
       <div>
         <h2>Your files here:</h2>
       </div>
