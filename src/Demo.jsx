@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useRef, useState } from "react";
 
 const Demo = () => {
+  const [files, setFiles] = useState([]);
+
+  const inputFileRef = useRef(null);
+
+  const handleSelect = () => {};
+
   return (
     <div>
-      Demo
-    </div>
-  )
-}
+      <input ref={inputFileRef} multiple hidden onChange={handleSelect} />
+      <button>Browse files</button>
+      <div>
+        <h2>Your files here:</h2>
+      </div>
 
-export default Demo
+      {files}
+    </div>
+  );
+};
+
+export default Demo;
