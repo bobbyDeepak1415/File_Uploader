@@ -1,9 +1,51 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 
 const Demo = () => {
+  const inputFileRef=useRef(null)
+
+  const [files,setFiles]=useState([])
+
+  const handleSelect=(e)=>{
+    const selectedFiles=Array.from(e.target.files)
+
+    const fileNames=selectedFiles.map((file)=>{
+      return {
+        name:file.name
+      }
+    })
+
+    setFiles((prev)=>[...prev,...fileNames])
+
+  }
+
+
+  const handleClick=()=>{
+inputFileRef.current.click()
+inputFileRef.current.value=""
+
+  }
+
   return (
-    <div>
-      Hello
+    <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
+      
+      <input ref={inputFileRef} onChange={handleSelect}  hidden multiple type='file'/>
+      <button onClick={handleClick}>Browse files</button>
+      <div style={{height:"40vh",width:"80vw",border:"1px dashed",margin:"auto",marginTop:"30px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+        Drop here
+      </div>
+
+<div>
+
+  <h2>Your files here:</h2>
+  <ul>
+
+  {files.map((file)=>{
+    return <li>{file.name}</li>
+  })}
+  </ul>
+</div>
+
+
     </div>
   )
 }
