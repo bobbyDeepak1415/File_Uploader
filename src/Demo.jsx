@@ -1,9 +1,16 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Demo = () => {
   const inputFileRef=useRef(null)
 
-  const [files,setFiles]=useState([])
+  const [files,setFiles]=useState(()=>{
+    const files=localStorage.getItem("files")
+    return files ? JSON.parse(files) : []
+  })
+
+  useEffect(()=>{
+localStorage.setItem("files",JSON.stringify(files))
+  },[files])
 
   const handleSelect=(e)=>{
     const selectedFiles=Array.from(e.target.files)
