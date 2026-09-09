@@ -25,12 +25,31 @@ inputFileRef.current.value=""
 
   }
 
+  const handleDrop=(e)=>{
+e.preventDefault()
+
+const droppedFiles=Array.from(e.dataTransfer.files)
+const fileNames=droppedFiles.map((file)=>{
+  return {
+    name:file.name
+  }
+})
+
+setFiles(prev=>[...prev,...fileNames])
+
+  }
+
+  const handleDefaults=(e)=>{
+e.preventDefault()
+e.stopPropagation()
+  }
+
   return (
     <div style={{height:"100vh",width:"100vw",backgroundColor:"gray"}}>
       
       <input ref={inputFileRef} onChange={handleSelect}  hidden multiple type='file'/>
       <button onClick={handleClick}>Browse files</button>
-      <div style={{height:"40vh",width:"80vw",border:"1px dashed",margin:"auto",marginTop:"30px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+      <div onDrop={handleDrop} onDragOver={handleDefaults} onDragEnter={handleDefaults} style={{height:"40vh",width:"80vw",border:"1px dashed",margin:"auto",marginTop:"30px",display:"flex",alignItems:"center",justifyContent:"center"}}>
         Drop here
       </div>
 
