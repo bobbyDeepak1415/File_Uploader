@@ -16,10 +16,14 @@ function FileUploader(props) {
 
     const fileData = selectedFiles.map((file) => {
       return { name: file.name };
-    });
+    });j
 
     setFiles((prev) => [...prev, ...fileData]);
   };
+
+  
+
+  
 
   const handleClick = () => {
     inputFileRef.current.click();
