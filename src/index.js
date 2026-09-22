@@ -16,12 +16,21 @@
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-
+let name="Deepak"
 
 let person1={
   name:"Bobby",
   age:30,
-  active:true
+  active:true,
+  print(){
+    console.log(`${this.name} is ${this.age} years old`)
+  }
 }
 
+
+// const title=person1.name
+
+const display=person1.print
+
+display()
 
