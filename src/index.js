@@ -16,7 +16,6 @@
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-let name="Deepak"
 
 let person1={
   name:"Bobby",
@@ -28,9 +27,12 @@ let person1={
 }
 
 
-// const title=person1.name
+const person2={
+  name:"Deepak",
+  age:"35",
 
-const display=person1.print
+}
 
-display()
+person1.print()
+const display=person1.print.call(person2)
 
