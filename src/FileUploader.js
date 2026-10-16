@@ -16,7 +16,8 @@ function FileUploader(props) {
 
     const fileData = selectedFiles.map((file) => {
       return { name: file.name };
-    });j
+    });
+    console.log(fileData)
 
     setFiles((prev) => [...prev, ...fileData]);
   };
@@ -42,6 +43,7 @@ function FileUploader(props) {
     const fileData = droppedFiles.map((file) => {
       return { name: file.name };
     });
+
 
     setFiles((prev) => [...prev, ...fileData]);
   };
