@@ -6,7 +6,7 @@ console.log("hello")
 const input=document.querySelector("#input")
 
 
-input.addEventListener("click",()=>{
+input.addEventListener("input",()=>{
   console.log(input.value)
 })
 
