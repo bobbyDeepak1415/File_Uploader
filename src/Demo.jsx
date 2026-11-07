@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Demo = () => {
+
+  const inputFileRef=useState(null)
+
   return (
     <div>
-      Hello
+      
+<input ref={inputFileRef} type='file'/>
+<div></div>
     </div>
   )
 }
