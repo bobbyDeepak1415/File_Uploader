@@ -3,11 +3,24 @@
 console.log("hello")
 
 
-const input=document.querySelector("#input")
+const input=document.querySelector("input")
+
+const typed=document.getElementById("typed")
+const run=document.getElementById("func_Run")
+
+let typedTimes=0
+
+let runTimes=0
+
+typed.innerText=typedTimes
+run.innerText=runTimes
 
 
 input.addEventListener("input",()=>{
-  console.log(input.value)
+  typedTimes++
+  typed.innerText=typedTimes
+  runTimes++
+  run.innerText=runTimes
 })
 
 
