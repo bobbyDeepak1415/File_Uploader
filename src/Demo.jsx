@@ -7,7 +7,7 @@ const Demo = () => {
   return (
     <div>
       
-<input ref={inputFileRef} type='file'/>
+<input type="file" ref={inputFileRef} />
 <div></div>
     </div>
   )
