@@ -7,16 +7,18 @@ const Demo = () => {
   const [selectedFiles,setSelectedFiles]=useState(()=>{
     
 
-      const files=localStorage.getItem("selectedFiles")
+      const selectedFiles=localStorage.getItem("selectedFiles")
 
-     return files ? JSON.parse(files) :[]
+     return selectedFiles ? JSON.parse(selectedFiles) :[]
     
 
   })
 
   useEffect(()=>[
 
-  ],[files])
+    localStorage.setItem("selectedFiles",JSON.stringify(selectedFiles))
+
+  ],[selectedFiles])
 
 const handleSelect=(e)=>{
 e.preventDefault()
