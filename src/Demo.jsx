@@ -17,7 +17,9 @@ const fileNames=files.map((file)=>{
   }
 })
 
-setSelectedFiles(fileNames)
+
+
+setSelectedFiles((prev)=>[...prev,...fileNames])
 
 }
 
@@ -29,8 +31,10 @@ setSelectedFiles(fileNames)
   return (
     <div>
       
-<input onSelect={(e)=>handleSelect(e)} hidden type="file" ref={inputFileRef} multiple />
+<input onChange={(e)=>handleSelect(e)} hidden type="file" ref={inputFileRef} multiple />
 <button className='border-2 bg-gray-400 p-1 rounded-md' onClick={handleClick}>Browse Files</button>
+
+<div className='border border-dashed border-black mt-2 h-[50vh] w-[90vw] m-auto'>Drop your files here</div>
 <br></br>
 <br></br>
 <br></br>
@@ -38,7 +42,7 @@ setSelectedFiles(fileNames)
   <ul>
 
   {selectedFiles.map((file)=>{
-    return 
+    return <li key={file.id}>{file.name}</li>
   })}
   </ul>
 </div>
